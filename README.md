@@ -9,7 +9,7 @@ convert Genome Build of txt or csv file using [pyliftover](https://pypi.org/proj
 ```
 pip install pyliftover
 ```
-you may need install `msgpack` for dependcy
+you may need install `msgpack` using `pip install msgpack` for dependcy
 ### Usage
 ```
 python liftover.py -c 0 -p 1 test.txt test_lifted.txt
@@ -24,7 +24,7 @@ Complete 100.00%
 total: 865,859	succeeded: 865,762	failed: 97	in: 11.89s.
 Have a nice day! :)
 ```
-#### for help
+### Help
 ```
 positional arguments:
   input           input unlifted file
