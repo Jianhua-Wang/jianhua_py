@@ -2,7 +2,7 @@
 #### This is a repository for my python scripts
 ## liftover
 convert Genome Build of txt or csv file using [pyliftover](https://pypi.org/project/pyliftover/)
-#### Requiment
+#### Requirement
 - python3 (conda)
 - pyliftover
 #### Install pyliftover

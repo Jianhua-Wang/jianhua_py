@@ -8,7 +8,7 @@ from multiprocessing import Pool,Manager
 
 # define arguments
 def parseArguments():
-    parser = argparse.ArgumentParser(usage="conver genome build of txt or csv file",description="python liftover.py -c 0 -p 1 test.txt test_lifted.txt",)
+    parser = argparse.ArgumentParser(usage="conver genome build of txt or csv file, require pyliftover",description="python liftover.py -c 0 -p 1 test.txt test_lifted.txt",)
     parser.add_argument('input', type=str, help='input unlifted file'),
     parser.add_argument('output', type=str, help='output lifted file'),
     parser.add_argument('-c','--chr', type=int, help='colunm positon of chromosome (0-based), default=0',default=0,metavar=''),
