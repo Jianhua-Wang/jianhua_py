@@ -201,8 +201,8 @@ def print_logo():
      \033[1;33m/\\\033[0m
     \033[1;33m/__\\\033[0m\033[1;31m\\\033[0m            Download SRA and GEO fastq, simple and faster
    \033[1;33m/\033[0m  \033[1;31m---\\\033[0m           
-  \033[1;33m/\\\033[0m      \033[1;31m\\\033[0m         Author: Jianhua Wang
- \033[1;33m/\033[0m\033[1;32m/\\\033[0m\033[1;33m\\\033[0m     \033[1;31m/\\\033[0m        Date:   01-04-202
+  \033[1;33m/\\\033[0m      \033[1;31m\\\033[0m          Author: Jianhua Wang
+ \033[1;33m/\033[0m\033[1;32m/\\\033[0m\033[1;33m\\\033[0m     \033[1;31m/\\\033[0m         Date:   01-04-202
  \033[1;32m/  \   /\033[0m\033[1;31m/__\\\033[0m
 \033[1;32m`----`-----\033[0m
 ========================================================================
@@ -225,7 +225,8 @@ def main():
         for accession in accession_list:
             download_accession(accession.strip())
     else:
-        download_accession(args.Accession)
+        for accession in args.Accession.split(','):
+            download_accession(accession)
 
 
 if __name__ == '__main__':
