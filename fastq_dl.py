@@ -150,8 +150,6 @@ def download_gsm(gsm_id):
 
 # # Download GSE
 
-gse_id = 'GSE89946'
-
 
 def download_gse(gse_id):
     '''
@@ -221,7 +219,7 @@ args = parseArguments()
 
 def main():
     if args.file:
-        accession_list = open('./gse.txt','r')
+        accession_list = open(args.file,'r')
         accession_list = accession_list.readlines()
         for accession in accession_list:
             download_accession(accession.strip())
