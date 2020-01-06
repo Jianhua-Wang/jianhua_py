@@ -183,6 +183,7 @@ def download_gse(gse_id):
 
 
 def download_accession(accession):
+    print(f'Start processing {accession}')
     if accession.startswith('SRR'):
         download_srr(accession)
     elif accession.startswith('SRX'):
@@ -202,7 +203,7 @@ def print_logo():
     \033[1;33m/__\\\033[0m\033[1;31m\\\033[0m            Download SRA and GEO fastq, simple and faster
    \033[1;33m/\033[0m  \033[1;31m---\\\033[0m           
   \033[1;33m/\\\033[0m      \033[1;31m\\\033[0m          Author: Jianhua Wang
- \033[1;33m/\033[0m\033[1;32m/\\\033[0m\033[1;33m\\\033[0m     \033[1;31m/\\\033[0m         Date:   01-04-202
+ \033[1;33m/\033[0m\033[1;32m/\\\033[0m\033[1;33m\\\033[0m     \033[1;31m/\\\033[0m         Date:   01-04-2020
  \033[1;32m/  \   /\033[0m\033[1;31m/__\\\033[0m
 \033[1;32m`----`-----\033[0m
 ========================================================================
@@ -212,7 +213,7 @@ print_logo()
 
 def parseArguments():
     parser = argparse.ArgumentParser(usage="python fastq_dl.py SRR9595574",description="Given a GSE, GSM, SRX, or SRR accession and download the fastq files",)
-    parser.add_argument('Accession', nargs='?', type=str, help='GEO or SRA Accession, i.e. SRR9595574, SRX2577854, GSM2496146, or GSE87254'),
+    parser.add_argument('Accession', nargs='?', type=str, help='GEO or SRA Accession, i.e. SRR9595574, SRX2577854, GSM2496146, or GSE87254. Use "," to specify more than one Accession'),
     parser.add_argument('-f','--file', type=str, help='Accession list file',metavar=''),
     args = parser.parse_args()
     return args
