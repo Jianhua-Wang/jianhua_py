@@ -103,7 +103,7 @@ def download_srx(srx_id):
 
     Some SRXs contain more than one SRR (i.e. SRX5545333). Download the SRRs iteratively for these cases.
     
-    [TODO] Merge the SRRs in the future.
+    [TODO] Merge the SRRs under same SRX.
     '''
     response = requests.get(f'https://www.ncbi.nlm.nih.gov/sra/?term={srx_id}')
     soup = BeautifulSoup(response.content, 'lxml')
@@ -207,7 +207,6 @@ def print_logo():
 ========================================================================
     '''
     print(logo)
-print_logo()
 
 def parseArguments():
     parser = argparse.ArgumentParser(usage="python fastq_dl.py SRR9595574",description="Given a GSE, GSM, SRX, or SRR accession and download the fastq files",)
@@ -215,7 +214,6 @@ def parseArguments():
     parser.add_argument('-f','--file', type=str, help='Accession list file',metavar=''),
     args = parser.parse_args()
     return args
-args = parseArguments()
 
 def main():
     if args.file:
@@ -229,5 +227,8 @@ def main():
 
 
 if __name__ == '__main__':
-    # print_logo()
+    print_logo()
+    args = parseArguments()
     main()
+
+
