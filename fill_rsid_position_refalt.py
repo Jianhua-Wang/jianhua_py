@@ -29,8 +29,10 @@ def rsid2position_alleles(rsid):
     check whether the rsid was merged into other rsid
     If rsID was merged into multiple rsIDs, use the first one (i.e. rs1448824014).
     query hg19 coordinate and alleles
-    Use the first alternative allele for multiallelic sites, 
-    which is always the one with largest allele frequency.
+    Use the first alternative allele for multiallelic sites.
+    
+    >>> rsid2position_alleles('rs4728142')
+    >>> ['7', '128573967', 'G', 'A']
     '''
     merge_out = check_output(
         f'tabix {merge_tabix} {rsid[2]}:{rsid[2:]}-{rsid[2:]}', shell=True)
@@ -48,31 +50,32 @@ def rsid2position_alleles(rsid):
         return rs2pos_out.decode().split()[2:6]
 
 
-rsid2position_alleles('rs4728142')
-
-
-# +
 def position2_rsid_alleles(chrom,pos):
     '''
-    fjdlad
+    query by hg19 coordinate and get rsid, ref, alt
+    use the first record for multiallelic sites, for example, chr7:24944757
+    
+    >>> position2_rsid_alleles('chr7',24944757)
+    >>> ['rs132', 'T', 'A']
     '''
     if str(chrom).startswith('chr'):
         chrom = chrom[3:]
     
+    pos2rs_out = check_output(f'tabix {pos2rs_tabix} {chrom}:{pos}-{pos}',shell=True)
+    if pos2rs_out == b'':
+        return [np.nan] * 3
+    else:
+        return pos2rs_out.decode().split()[2:5]
+
+
+def fill_all(chrom,pos,rsid,ref,alt):
+    '''
+    fill the missing value in chrom,pos,rsid,ref,alt according to the known one(s).
     
+    '''
+    daying
 
-# +
-chrom,pos = 7,24944757
-if str(chrom).startswith('chr'):
-    chrom = chrom[3:]
 
-pos2rs_out = check_output(f'tabix {pos2rs_tabix} {chrom}:{pos}-{pos}',shell=True)
-if pos2rs_out == b'':
-    return [np.nan] * 4
-else:
-    return rs2pos_out.decode().split()[2:6]
-# -
-
-pos2rs_out.decode().split()[:5]
+position2_rsid_alleles(1,1118275)
 
 
