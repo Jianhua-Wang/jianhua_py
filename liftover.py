@@ -69,7 +69,7 @@ def main():
     else:
         names = None
         write_header = open(args.output,'w')
-        write_header.write(f'{args.sep}'.join(demo.columns)+'\n')
+        write_header.write(f'{sep}'.join(demo.columns)+'\n')
         write_header.close()
         chr_id,bp = demo.columns[args.chr],demo.columns[args.pos]
 
